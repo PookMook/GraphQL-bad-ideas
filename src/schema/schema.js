@@ -1,6 +1,20 @@
 module.exports = `
+type Tweet{
+  id:ID!
+  text:String!
+  author:User!
+}
+
+type User {
+  id:ID!
+  name:String!
+  handle:String!
+  tweets:[Tweet!]!
+}
+
 type Query {
-  hello:String
+  authors:[User!]!
+  tweets:[Tweet!]!
 }
 type Mutation {
   foo:String

@@ -1,8 +1,9 @@
+const graph = require('./function')
+//const graph = require('./graph2tree')
+
 module.exports = {
   Query: {
-    hello: (_, args, context)=>{
-      return 'world'
-    }
+    ...graph
   },
   Mutation:{
   },
