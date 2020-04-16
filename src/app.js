@@ -4,10 +4,10 @@ const resolvers = require('./resolvers/index')
 
 const pubsub = new PubSub()
 
-const server = new GraphQLServer({ typeDefs, resolvers, context: { pubsub } })
-
+const server = new GraphQLServer({ typeDefs, resolvers, context: ()=>({ pubsub })})
 
 const options = {
+  port:4001,
   cors:{
     origin: [process.env.ALLOW_CORS_FRONTEND,'http://localhost:3000'],
     allowed_methods: ["HEAD", "GET", "POST"],
@@ -17,4 +17,4 @@ const options = {
   }
 }
 
-server.start(options, () => console.log('Server is running on localhost:4000'))
+server.start(options, () => console.log(`Server is running on localhost:${options.port || '4000'}`))
